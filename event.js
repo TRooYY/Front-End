@@ -1,7 +1,13 @@
 var Event = {
 	on: function(eventName, callback){
 		if(!this.handles){
-			this.handles = {};
+			//this.handles = {};
+			Object.defineProperty(this, 'handles', {
+				value: {},
+				enumerable: false,
+				configurable: true,
+				writable: true
+		})
 		}
 		if(! this.handles[eventName]){
 			this.handles[eventName] = [];
